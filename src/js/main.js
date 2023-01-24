@@ -1,5 +1,5 @@
 import "../css/style.css";
-import { data } from "./data";
+//  all elements  
 const carouselContainer = document.getElementById("carousel-container");
 const indicatorsContainer = document.getElementById("indicators-container");
 const prevBtn = document.getElementById("prev-btn");
@@ -32,7 +32,6 @@ const activeIndicator = () => {
 // carousel previouse event function 
 const getPrevBtnEvenListener = () => {
   count < 1 ? (count = carouselChildrens.length - 1) : (count = count);
-
   const previousCarousel = carouselItemsConvert[count];
   const filterCarousel = carouselItemsConvert.filter(
     (caro) => caro !== previousCarousel
@@ -46,7 +45,7 @@ const getPrevBtnEvenListener = () => {
   count--;
   activeIndicator();
 };
-// next button event listener function
+// next  event  function
 const getNextBtnEventListener = () => {
   count > 5 ? (count = 0) : (count = count);
   const previousCarousel = carouselItemsConvert[count];
@@ -62,6 +61,7 @@ const getNextBtnEventListener = () => {
   count++;
   activeIndicator();
 };
+// modal previous event function 
 const getPrevBtnEvenListenerModal = () => {
   modalCount < 1 ? (modalCount = carouselChildrens.length - 1) : (modalCount = modalCount);
 
@@ -76,7 +76,7 @@ const getPrevBtnEvenListenerModal = () => {
     element.style.transition = "400s ease-in-out";
   });
 };
-// next button event listener function
+// modal event  function
 const getNextBtnEventListenerModal = () => {
   modalCount > 5 ? (modalCount = 0) : (modalCount = modalCount);
   const previousCarousel = modalCarouselItemsConvert[modalCount];
@@ -90,11 +90,6 @@ const getNextBtnEventListenerModal = () => {
   count++;
 };
 
-//   button event listener
-nextBtn.addEventListener("click", getNextBtnEventListener);
-prevBtn.addEventListener("click", getPrevBtnEvenListener);
-nextBtnModal.addEventListener("click", getNextBtnEventListenerModal);
-prevBtnModal.addEventListener("click", getPrevBtnEvenListenerModal);
 // auto play carousel 
 let autoPlay = setInterval(getNextBtnEventListener, 1500);
 // clear interval
@@ -113,19 +108,23 @@ carouselItems.forEach((item) => {
 //  modal open 
 carouselItemsConvert.map((item,index) =>{
   item.addEventListener('click', ()=>{
-      let parentDiv =  modalCarouselContainer.parentNode.parentNode
-      parentDiv.style.display = 'flex';
-      modalCount = index
-      let convertModalCarousel = Array.from(modalCarouselContainer.children);
-      let activeCarousel = convertModalCarousel[index];
-      activeCarousel.style.display = 'flex';
-      let restCarousel = convertModalCarousel.filter(c => c !== activeCarousel);
-      restCarousel.map(restC =>{
-        restC.style.display = 'none';
-      })
-
+    let parentDiv =  modalCarouselContainer.parentNode.parentNode
+    parentDiv.style.display = 'flex';
+    modalCount = index
+    let convertModalCarousel = Array.from(modalCarouselContainer.children);
+    let activeCarousel = convertModalCarousel[index];
+    activeCarousel.style.display = 'flex';
+    let restCarousel = convertModalCarousel.filter(c => c !== activeCarousel);
+    restCarousel.map(restC =>{
+      restC.style.display = 'none';
+    })
   })
 })
+//   all event listener
+nextBtn.addEventListener("click", getNextBtnEventListener);
+prevBtn.addEventListener("click", getPrevBtnEvenListener);
+nextBtnModal.addEventListener("click", getNextBtnEventListenerModal);
+prevBtnModal.addEventListener("click", getPrevBtnEvenListenerModal);
 // modal close 
 modalClose.addEventListener('click', ()=>{
   let parentDiv =  modalCarouselContainer.parentNode.parentNode
