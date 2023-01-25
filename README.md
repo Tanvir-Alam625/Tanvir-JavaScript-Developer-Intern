@@ -21,9 +21,9 @@ follow the point:
 Install my-project with npm
 
 ```bash
-  git clone https://github.com/Tanvir-Alam625/    Tanvir-JavaScript-Developer-Intern.git
+  git clone https://github.com/Tanvir-Alam625/Tanvir-JavaScript-Developer-Intern.git
 
-  cd Tanvir-JavaScript-Developer-Intern
+  cd ./Tanvir-JavaScript-Developer-Intern
   npm install
   npm run dev 
 ```
