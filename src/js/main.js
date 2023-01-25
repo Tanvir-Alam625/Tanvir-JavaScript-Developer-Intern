@@ -1,6 +1,6 @@
 import "../css/style.css";
 //  all elements  
-const carouselContainer = document.getElementById("carousel-container");
+let carouselContainer = document.getElementById("carousel-container");
 const indicatorsContainer = document.getElementById("indicators-container");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
@@ -13,6 +13,7 @@ const carouselItemsConvert = Array.from(carouselChildrens);
 const modalCarouselItemsConvert = Array.from(modalCarouselContainer.children);
 let count = 1;
 let modalCount = 1;
+
 
 // for active indicators function 
 const activeIndicator = () => {
@@ -64,7 +65,6 @@ const getNextBtnEventListener = () => {
 // modal previous event function 
 const getPrevBtnEvenListenerModal = () => {
   modalCount < 1 ? (modalCount = carouselChildrens.length - 1) : (modalCount = modalCount);
-
   const previousCarousel = modalCarouselItemsConvert[modalCount];
   const filterCarousel = modalCarouselItemsConvert.filter(
     (caro) => caro !== previousCarousel
@@ -75,6 +75,7 @@ const getPrevBtnEvenListenerModal = () => {
     element.style.display = "none";
     element.style.transition = "400s ease-in-out";
   });
+  modalCount--;
 };
 // modal event  function
 const getNextBtnEventListenerModal = () => {
@@ -87,7 +88,7 @@ const getNextBtnEventListenerModal = () => {
   filterCarousel.forEach((element) => {
     element.style.display = "none";
   });
-  count++;
+  modalCount++;
 };
 
 // auto play carousel 
