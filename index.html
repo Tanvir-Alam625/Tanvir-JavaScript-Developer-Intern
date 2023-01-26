@@ -11,44 +11,57 @@
     .carousel-container{
       transition:  transform 600ms ease;
     }
+    #indicators-container{
+      transform:translate(-50%, 50%)
+    }
+    .indicator{
+      background: #fff;
+    }
+    .indicator:first-child{
+      background: rgba(1,114,232,1);
+    }
   </style>
+
 </head>
 
-<body class="bg-slate-200">
-  <section class="w-full h-screen grid place-items-center  ">
-    <div class=" relative     md:w-4/5 xl:w-2/5 w-full overflow-hidden rounded shadow-lg ">
+<body class="bg-slate-200 mx-2 md:mx-0">
+  <section class="w-full  h-screen grid place-items-center  ">
+    <div class=" parent-div relative md:w-3/5 xl:w-3/5 w-full overflow-hidden rounded shadow-lg ">
        <figure class="carousel-container w-full flex ">
-            <img src="./src/images/slider/slider (1).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in  w-full min-h-full">
-            <img src="./src/images/slider/slider (2).jpg" alt="carousel-img" class=" rounded  carousel-item cursor-zoom-in w-full min-h-full">
-            <img src="./src/images/slider/slider (3).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in w-full min-h-full">
-            <img src="./src/images/slider/slider (4).jpg" alt="carousel-img" class=" rounded  carousel-item cursor-zoom-in w-full min-h-full">
-            <img src="./src/images/slider/slider (5).jpg" alt="carousel-img" class=" rounded  carousel-item cursor-zoom-in w-full min-h-full">
-            <img src="./src/images/slider/slider (6).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in w-full min-h-full">
-            <img src="./src/images/slider/slider (7).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in w-full min-h-full">
-
+            <img src="./src/images/slider/slider (1).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in  min-w-full min-h-full">
+            <img src="./src/images/slider/slider (2).jpg" alt="carousel-img" class=" rounded  carousel-item cursor-zoom-in min-w-full min-h-full">
+            <img src="./src/images/slider/slider (3).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in min-w-full min-h-full">
+            <img src="./src/images/slider/slider (4).jpg" alt="carousel-img" class=" rounded  carousel-item cursor-zoom-in min-w-full min-h-full">
+            <img src="./src/images/slider/slider (5).jpg" alt="carousel-img" class=" rounded  carousel-item cursor-zoom-in min-w-full min-h-full">
+            <img src="./src/images/slider/slider (6).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in min-w-full min-h-full">
+            <img src="./src/images/slider/slider (7).jpg" alt="carousel-img" class=" rounded carousel-item cursor-zoom-in min-w-full min-h-full">
       </figure>
       <button id="prev-btn"
-        class="left-btn shadow-lg bg-[rgba(0,0,0,0.1)] z-10 duration-300 ease-in-out hover:bg-[rgba(0,0,0,0.2)] rounded-r absolute top-[50%] translate-y-[-50%] left-0">
+        class="left-btn shadow-lg bg-[rgba(0,0,0,0.1)] z-10 duration-300 ease-in-out hover:bg-[rgba(1,114,232,0.5)] rounded-r absolute top-[50%] translate-y-[-50%] left-0">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-10 h-10 duration-300 ease-in-out text-slate-300 scale-100 hover:text-slate-100 hover:scale-x-125 cursor-pointer p-2 ">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
       <button id="next-btn"
-        class="right-btn shadow-lg  absolute bg-[rgba(0,0,0,0.1)] z-10 duration-300 ease-in-out hover:bg-[rgba(0,0,0,0.2)] rounded-l top-[50%] translate-y-[-50%]  right-0 ">
+        class="right-btn shadow-lg  absolute bg-[rgba(0,0,0,0.1)] z-10 duration-300 ease-in-out hover:bg-[rgba(1,114,232,0.5)] rounded-l top-[50%] translate-y-[-50%]  right-0 ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-10 h-10 duration-300 ease-in-out text-slate-300 scale-100 hover:text-slate-100 hover:scale-x-125 cursor-pointer p-2 ">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
-
-     
-      <div class="absolute bottom-0 left-[50%] translate-y-[-50%]">
-        jsd
+      <div id="indicators-container" class=" absolute  bottom-[5%] left-[50%] right-[50%]   flex w-20 justify-between">
+        <div class="indicator cursor-pointer  h-2 w-2 rounded-full "></div>
+        <div class="indicator cursor-pointer h-2 w-2 rounded-full "></div>
+        <div class="indicator cursor-pointer h-2 w-2 rounded-full "></div>
+        <div class="indicator cursor-pointer h-2 w-2 rounded-full "></div>
+        <div class="indicator cursor-pointer h-2 w-2 rounded-full "></div>
+        <div class="indicator cursor-pointer h-2 w-2 rounded-full "></div>
+        <div class="indicator cursor-pointer h-2 w-2 rounded-full "></div>
       </div>
     </div>
   </section>
-  <script type="module" src="./src/js/main.js"></script>
+  <script type="module" defer src="./src/js/main.js"></script>
 </body>
 
 </html>

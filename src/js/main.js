@@ -1,44 +1,101 @@
 import "../css/style.css";
-// variables 
 
+
+// variables 
+const parentDiv = document.querySelector('.parent-div');
 const carouselContainer = document.querySelector('.carousel-container');
+const indicatorsContainer = document.getElementById('indicators-container')
 const prevButton = document.getElementById('prev-btn')
 const nextButton = document.getElementById('next-btn')
 const carouselItems = document.querySelectorAll('.carousel-item');
-
+const indicators = document.querySelectorAll('.indicator');
+// necessary variables 
 let index = 0;
 let carouselWidth  = carouselItems[index].clientWidth;
 let carouselLength = carouselItems.length - 1; 
-const getCarouselWidth = () => {
-        carouselWidth = carouselItems[index].clientWidth;
+let convertCarouselItems = Array.from(carouselItems);
+let convertIndicators = Array.from(indicators);
+
+
+
+
+// =================================
+// start the function definations 
+// =================================
+
+
+// indicators event function 
+convertIndicators.map((indicator,index)=>{
+        indicator.addEventListener('click', ()=>{
+                getActiveIndicator(indicator)
+                carouselContainer.style.transform = `translate(-${index * carouselWidth + 1}px)`;
+        })
+})
+
+// active indicator function 
+const getActiveIndicator = (active) =>{
+        active.style.background = 'rgba(1,114,232,1)';
+        const filteredIndicators = convertIndicators.filter((indicator)=> indicator !== active);
+        filteredIndicators.forEach(indicator => {
+                indicator.style.background = '#fff';
+        });
 }
 
 
-window.onresize = getCarouselWidth;
-
+// window resize function 
+const getCarouselWidth = () => {
+        carouselWidth = carouselItems[index].clientWidth;
+}
+// button next function 
 const getNextCarousel = () => {
         index++;
         if (index > carouselLength){
                 index = 0;
                 carouselContainer.style.transform = `translate(0px)`;
+                let activeIndicator = convertIndicators[index];
+                getActiveIndicator(activeIndicator);
         }else{
-                carouselContainer.style.transform = `translate(-${index * carouselWidth}px)`;
+                carouselContainer.style.transform = `translate(-${index * carouselWidth + 1}px)`;
+                // convertIndicators[index].style.background = 'red';
+                let activeIndicator = convertIndicators[index];
+                getActiveIndicator(activeIndicator);
         }
 }
+// button previous function
 const getPrevCarousel = () => {
         index--;
         if (index < 0){
                 index = carouselLength;
-                carouselContainer.style.transform = `translate(-${index * carouselWidth}px)`;
+                carouselContainer.style.transform = `translate(-${index * carouselWidth + 1}px)`;
+                let activeIndicator = convertIndicators[index];
+                getActiveIndicator(activeIndicator);
         }else{
-                carouselContainer.style.transform = `translate(-${index * carouselWidth}px)`;
+                carouselContainer.style.transform = `translate(-${index * carouselWidth + 1}px)`;
+                let activeIndicator = convertIndicators[index];
+                getActiveIndicator(activeIndicator);
         }
 }
+// =================================
+// end the function definations 
+// =================================
 
 
-nextButton.addEventListener('click',getNextCarousel)
-prevButton.addEventListener('click',getPrevCarousel)
+// start the functions calling 
+window.onresize = getCarouselWidth;
+nextButton.addEventListener('click', getNextCarousel)
+prevButton.addEventListener('click', getPrevCarousel)
+//  for  carousel items auto slide 
+let autoPlay = setInterval(getNextCarousel, 2000);
 
+
+// once mouse over the parent div  auto slide off 
+parentDiv.addEventListener('mouseover', ()=>{
+        clearInterval(autoPlay)
+})
+// once mouse out the parent div  auto slide on 
+parentDiv.addEventListener('mouseout', ()=>{
+        autoPlay = setInterval(getNextCarousel, 2000);
+})
 
 
 //  all elements  
