@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.carousel-container {
+  transition: transform 600ms ease;
+}
+
+#indicators-container {
+  transform: translate(-50%, 50%)
+}
+
+.indicator {
+  background: #fff;
+}
+
+.indicator:first-child {
+  background: rgba(1, 114, 232, 1);
+}
+.modal-container{
+  transition: transform 600ms ease;
+  transform: scale(0);
+  overflow: hidden;
+}
+.modal-carousel-container{
+  transition: transform 600ms ease ;
+}
+
 /* :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
