@@ -11,7 +11,7 @@ follow the point:
 - Then Clone the Github Repo.
 - Go to the Project Directory.
 - Open the terminal.
-- And Enter the commmand this npm install.
+- And Enter the command this npm install.
 - And to run the project npm run dev enter this command.
 
 
